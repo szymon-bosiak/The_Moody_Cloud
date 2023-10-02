@@ -25,7 +25,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  document.title = `Weather App | ${to.params.location ? to.params.location : to.meta.title }`
+  document.title = `The Moody Cloud | ${to.params.location ? to.params.location : to.meta.title }`
   next()
 })
 

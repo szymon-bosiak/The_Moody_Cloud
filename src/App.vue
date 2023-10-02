@@ -1,9 +1,9 @@
 <template>
-  <div class="flex flex-col min-h-screen font-Roboto bg-weather-primary">
+  <div class="flex flex-col min-h-screen font-Roboto bg-background">
     <Navigation @temp-format="ToggleTemp" />
     <RouterView v-slot="{ Component }">
       <Transition name="page" mode="out-in">
-        <component :is="Component" :tempFormat="tempFormat" />
+        <component :is="Component" :tempFormat="tempFormat"/>
       </Transition>
     </RouterView>
   </div>
