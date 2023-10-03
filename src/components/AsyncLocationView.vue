@@ -1,15 +1,15 @@
 <template>
   <div class="flex justify-center items-center py-6">
-    <div class="w-5/6">
+    <div class="w-5/6 flex flex-1 flex-col items-center">
 
       <!-- Main display -->
-      <div class="rounded-xl max-w-screen-lg mb-6"
+      <div class="rounded-xl max-w-screen-lg mb-6 w-5/6"
         :class="{ 'bg-night': timeOfDay === 'n', 'bg-day': timeOfDay === 'd' }">
         <!-- Preview mode -->
         <div v-if="route.query.preview" class="text-white p-4 bg-weather-primary text-center rounded-xl -translate-y-1 ">
           <p>
-            You are currently previewing this city, click the "+"
-            icon to start tracking this city.
+            You are currently previewing this location, click the "+"
+            icon to pin this it onto home screen.
           </p>
         </div>
 
@@ -107,20 +107,20 @@
               <div v-else-if="weatherData.current.weather[0].icon === '09n'">
                 <img class="w-[600px] absolute -top-64 -right-36" src="../assets/icons/animated/rainy-6.svg"
                   alt="weather icon" />
-                <img class="w-[600px] absolute -bottom-32 -left-40 -scale-x-100"
+                <img class="w-[600px] absolute -bottom-36 -left-48 -scale-x-100"
                   src="../assets/icons/animated/rainy-6.svg" alt="weather icon" />
               </div>
 
               <div v-else-if="weatherData.current.weather[0].icon === '10d'">
                 <img class="w-[600px] absolute -top-56 -right-64" src="../assets/icons/animated/rainy-3.svg"
                   alt="weather icon" />
-                <img class="w-[600px] absolute -bottom-40 -left-72 -translate-x-2" src="../assets/icons/animated/rainy-3.svg"
-                  alt="weather icon" />
+                <img class="w-[600px] absolute -bottom-40 -left-72 -translate-x-2"
+                  src="../assets/icons/animated/rainy-3.svg" alt="weather icon" />
               </div>
               <div v-else-if="weatherData.current.weather[0].icon === '10n'">
                 <img class="w-[600px] absolute -top-56 -right-48" src="../assets/icons/animated/rainy-5.svg"
                   alt="weather icon" />
-                <img class="w-[600px] absolute -bottom-44 -left-80" src="../assets/icons/animated/rainy-5.svg"
+                <img class="w-[600px] absolute -bottom-36 -left-48" src="../assets/icons/animated/rainy-5.svg"
                   alt="weather icon" />
               </div>
 
@@ -199,11 +199,12 @@
       </div>
 
       <!-- 24 Hours Forecast -->
-      <div class="max-w-screen-lg w-full pb-10 pt-8 rounded-xl mb-6 "
+      <div class="max-w-screen-lg w-5/6 pb-10 pt-8 rounded-xl mb-6 "
         :class="{ 'bg-night': timeOfDay === 'n', 'bg-day': timeOfDay === 'd' }">
         <div class="mx-6 text-white">
-          <h2 class="mb-10 mx-5  drop-shadow-[0_2px_2px_rgba(0,0,0,0.6)]">24 Hours Forecast</h2>
-          <div class="flex gap-8 overflow-x-scroll scrollbar-thin scrollbar-thumb-amber-500 scrollbar-thumb-rounded-lg scrollbar-rounded-lg scrollbar-track-transparent">
+          <h2 class="mb-10 mx-5 drop-shadow-[0_2px_2px_rgba(0,0,0,0.6)]">24 Hours Forecast</h2>
+          <div
+            class="flex gap-8 overflow-x-scroll scrollbar-thin scrollbar-thumb-amber-500 scrollbar-thumb-rounded-lg scrollbar-rounded-lg scrollbar-track-transparent">
             <div v-for="hourData in weatherData.hourly.slice(1, 25)" :key="hourData.dt"
               class="flex flex-col gap-4 items-center w-40 mb-8">
               <p class="whitespace-nowrap flex justify-center text-md w-32">
@@ -218,8 +219,8 @@
 
               <!-- Conditional IMGs -->
               <div>
-                <img v-if="hourData.weather[0].icon === '01d'" class="w-32"
-                  src="../assets/icons/static/day.svg" alt="weather icon -translate-y-3" />
+                <img v-if="hourData.weather[0].icon === '01d'" class="w-32" src="../assets/icons/static/day.svg"
+                  alt="weather icon -translate-y-3" />
                 <img v-else-if="hourData.weather[0].icon === '01n'" class="w-32 -translate-y-3"
                   src="../assets/icons/static/night.svg" alt="weather icon" />
 
@@ -240,30 +241,30 @@
 
                 <img v-else-if="hourData.weather[0].icon === '09d' || '09n'" class="w-32"
                   src="../assets/icons/static/rainy-6.svg" alt="weather icon" />
-                <img v-else-if="hourData.weather[0].icon === '09n'" class="w-32"
-                  src="../assets/icons/static/rainy-6.svg" alt="weather icon" />
+                <img v-else-if="hourData.weather[0].icon === '09n'" class="w-32" src="../assets/icons/static/rainy-6.svg"
+                  alt="weather icon" />
 
                 <img v-else-if="hourData.weather[0].icon === '10d' || '09n'" class="w-32"
                   src="../assets/icons/static/rainy-3.svg" alt="weather icon" />
-                <img v-else-if="hourData.weather[0].icon === '10n'" class="w-32"
-                  src="../assets/icons/static/rainy-5.svg" alt="weather icon" />
+                <img v-else-if="hourData.weather[0].icon === '10n'" class="w-32" src="../assets/icons/static/rainy-5.svg"
+                  alt="weather icon" />
 
                 <img v-else-if="hourData.weather[0].icon === '11d' || '09n'" class="w-32"
                   src="../assets/icons/static/thunder.svg" alt="weather icon" />
-                <img v-else-if="hourData.weather[0].icon === '11n'" class="w-32"
-                  src="../assets/icons/static/thunder.svg" alt="weather icon" />
+                <img v-else-if="hourData.weather[0].icon === '11n'" class="w-32" src="../assets/icons/static/thunder.svg"
+                  alt="weather icon" />
 
                 <img v-else-if="hourData.weather[0].icon === '13d' || '09n'" class="w-32"
                   src="../assets/icons/static/snow-3.svg" alt="weather icon" />
-                <img v-else-if="hourData.weather[0].icon === '13n'" class="w-32"
-                  src="../assets/icons/static/snow-5.svg" alt="weather icon" />
+                <img v-else-if="hourData.weather[0].icon === '13n'" class="w-32" src="../assets/icons/static/snow-5.svg"
+                  alt="weather icon" />
 
                 <img v-else-if="hourData.weather[0].icon === '50d' || '09n'" class="w-32"
                   src="../assets/icons/static/cloudy.svg" alt="weather icon" />
-                <img v-else-if="hourData.weather[0].icon === '50n'" class="w-32"
-                  src="../assets/icons/static/cloudy.svg" alt="weather icon" />
+                <img v-else-if="hourData.weather[0].icon === '50n'" class="w-32" src="../assets/icons/static/cloudy.svg"
+                  alt="weather icon" />
               </div>
-             
+
               <div class="text-4xl font-SquadaOne">
                 <p v-if="tempFormat">
                   {{ Math.round(hourData.temp) }}&deg;
@@ -278,88 +279,126 @@
       </div>
 
       <!-- 7 Day Forecast -->
-      <div class="max-w-screen-lg w-full py-12 rounded-xl mb-6"
+      <div class="max-w-screen-lg w-5/6 py-12 rounded-xl mb-6"
         :class="{ 'bg-night': timeOfDay === 'n', 'bg-day': timeOfDay === 'd' }">
         <div class="mx-8 text-white">
-          <h2 class="mb-10">7 Day Forecast</h2>
-          <div v-for="day in weatherData.daily" :key="day.dt" class="flex items-center">
-            <p class="flex-1">
-              {{
-                new Date(day.dt * 1000).toLocaleDateString(
-                  "en-us",
-                  {
-                    weekday: "long",
-                  }
-                )
-              }}
-            </p>
+          <h2 class="mb-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.6)]">7 Day Forecast</h2>
+          <div v-for="day in weatherData.daily" :key="day.dt"
+            class="flex items-center justify-between border-2 rounded-xl mb-5 px-6 shadow-lg overflow-hidden">
+            <div class="flex flex-col w-16 gap-2">
+              <p class="text-2xl">
+                {{
+                  new Date(day.dt * 1000).toLocaleDateString(
+                    "en-GB",
+                    {
+                      weekday: "long",
+                    }
+                  )
+                }}
+              </p>
+              <p class="text-xs">
+                {{
+                  new Date(day.dt).toLocaleDateString(
+                    "en-GB",
+                    {
+                      day: "numeric",
+                      month: "long",
+                    }
+                  )
+                }}
+              </p>
+            </div>
 
             <!-- Conditional IMGs -->
-            <div class="">
-              <img v-if="day.weather[0].icon === '01d'" class="w-[150px] h-auto" src="../assets/icons/static/day.svg"
-                alt="weather icon" />
-              <img v-else-if="day.weather[0].icon === '01n'" class="w-[150px] h-auto"
-                src="../assets/icons/static/night.svg" alt="weather icon" />
+            <div class="flex justify-center items-center relative">
 
-              <img v-else-if="day.weather[0].icon === '02d'" class="w-[150px] h-auto"
+              <!-- Backdrop -->
+              <div class="relative">
+                <div class="w-96 h-40 rounded-full blur-3xl absolute -left-28 -top-10"
+                  :class="{ 'bg-weather-secondary bg-opacity-20': timeOfDay === 'n', 'bg-amber-200 bg-opacity-40': timeOfDay === 'd' }"></div>
+              </div>
+
+              <img v-if="day.weather[0].icon === '01d'" class="w-40 z-10" src="../assets/icons/static/day.svg"
+                alt="weather icon" />
+
+              <img v-else-if="day.weather[0].icon === '01n'" class="w-40 z-10" src="../assets/icons/static/night.svg"
+                alt="weather icon" />
+
+              <img v-else-if="day.weather[0].icon === '02d'" class="w-40 z-10"
                 src="../assets/icons/static/cloudy-day-1.svg" alt="weather icon" />
-              <img v-else-if="day.weather[0].icon === '02n'" class="w-[150px] h-auto"
+              <img v-else-if="day.weather[0].icon === '02n'" class="w-40 z-10"
                 src="../assets/icons/static/cloudy-night-1.svg" alt="weather icon" />
 
-              <img v-else-if="day.weather[0].icon === '03d'" class="w-[150px] h-auto"
+              <img v-else-if="day.weather[0].icon === '03d'" class="w-40 z-10"
                 src="../assets/icons/static/cloudy-day-2.svg" alt="weather icon" />
-              <img v-else-if="day.weather[0].icon === '03n'" class="w-[150px] h-auto"
+              <img v-else-if="day.weather[0].icon === '03n'" class="w-40 z-10"
                 src="../assets/icons/static/cloudy-night-2.svg" alt="weather icon" />
 
-              <img v-else-if="day.weather[0].icon === '04d'" class="w-[150px] h-auto"
+              <img v-else-if="day.weather[0].icon === '04d'" class="w-40 z-10"
                 src="../assets/icons/static/cloudy-day-3.svg" alt="weather icon" />
-              <img v-else-if="day.weather[0].icon === '04n'" class="w-[150px] h-auto"
+              <img v-else-if="day.weather[0].icon === '04n'" class="w-40 z-10"
                 src="../assets/icons/static/cloudy-night-3.svg" alt="weather icon" />
 
-              <img v-else-if="day.weather[0].icon === '09d' || '09n'" class="w-[150px] h-auto"
-                src="../assets/icons/static/rainy-6.svg" alt="weather icon" />
-              <img v-else-if="day.weather[0].icon === '09n'" class="w-[150px] h-auto"
-                src="../assets/icons/static/rainy-6.svg" alt="weather icon" />
+              <img v-else-if="day.weather[0].icon === '09d'" class="w-40 z-10" src="../assets/icons/static/rainy-6.svg"
+                alt="weather icon" />
+              <img v-else-if="day.weather[0].icon === '09n'" class="w-40 z-10" src="../assets/icons/static/rainy-6.svg"
+                alt="weather icon" />
 
-              <img v-else-if="day.weather[0].icon === '10d' || '09n'" class="w-[150px] h-auto"
-                src="../assets/icons/static/rainy-3.svg" alt="weather icon" />
-              <img v-else-if="day.weather[0].icon === '10n'" class="w-[150px] h-auto"
-                src="../assets/icons/static/rainy-5.svg" alt="weather icon" />
+              <img v-else-if="day.weather[0].icon === '10d'" class="w-40 z-10" src="../assets/icons/static/rainy-3.svg"
+                alt="weather icon" />
+              <img v-else-if="day.weather[0].icon === '10n'" class="w-40 z-10" src="../assets/icons/static/rainy-5.svg"
+                alt="weather icon" />
 
-              <img v-else-if="day.weather[0].icon === '11d' || '09n'" class="w-[150px] h-auto"
-                src="../assets/icons/static/thunder.svg" alt="weather icon" />
-              <img v-else-if="day.weather[0].icon === '11n'" class="w-[150px] h-auto"
-                src="../assets/icons/static/thunder.svg" alt="weather icon" />
+              <img v-else-if="day.weather[0].icon === '11d'" class="w-40 z-10" src="../assets/icons/static/thunder.svg"
+                alt="weather icon" />
+              <img v-else-if="day.weather[0].icon === '11n'" class="w-40 z-10" src="../assets/icons/static/thunder.svg"
+                alt="weather icon" />
 
-              <img v-else-if="day.weather[0].icon === '13d' || '09n'" class="w-[150px] h-auto"
-                src="../assets/icons/static/snow-3.svg" alt="weather icon" />
-              <img v-else-if="day.weather[0].icon === '13n'" class="w-[150px] h-auto"
-                src="../assets/icons/static/snow-5.svg" alt="weather icon" />
+              <img v-else-if="day.weather[0].icon === '13d'" class="w-40 z-10" src="../assets/icons/static/snow-3.svg"
+                alt="weather icon" />
+              <img v-else-if="day.weather[0].icon === '13n'" class="w-40 z-10" src="../assets/icons/static/snow-5.svg"
+                alt="weather icon" />
 
-              <img v-else-if="day.weather[0].icon === '50d' || '09n'" class="w-[150px] h-auto"
-                src="../assets/icons/static/cloudy.svg" alt="weather icon" />
-              <img v-else-if="day.weather[0].icon === '50n'" class="w-[150px] h-auto"
-                src="../assets/icons/static/cloudy.svg" alt="weather icon" />
+              <img v-else-if="day.weather[0].icon === '50d'" class="w-40 z-10" src="../assets/icons/static/cloudy.svg"
+                alt="weather icon" />
+              <img v-else-if="day.weather[0].icon === '50n'" class="w-40 z-10" src="../assets/icons/static/cloudy.svg"
+                alt="weather icon" />
+
             </div>
 
-            <div v-if="tempFormat" class="flex gap-2 flex-1 justify-end">
-              <p>H: {{ Math.round(day.temp.max) }}&deg</p>
-              <p>L: {{ Math.round(day.temp.min) }}&deg</p>
-            </div>
-            <div v-else class="flex gap-2 flex-1 justify-end">
-              <p>H: {{ Math.round((day.temp.max * 9 / 5) + 32) }}&deg</p>
-              <p>L: {{ Math.round((day.temp.min * 9 / 5) + 32) }}&deg</p>
+            <div class="text-xl">
+              <div v-if="tempFormat" class="flex flex-col gap-2 flex-1 justify-end">
+                <div class="flex flex-row gap-2">
+                  <i class="fa-solid fa-temperature-arrow-up translate-y-[3px]" style="color: #e9481f;"></i>
+                  <p>{{ Math.round(day.temp.max) }}&deg</p>
+                </div>
+                <div class="flex flex-row gap-2">
+                  <i class="fa-solid fa-temperature-arrow-down translate-y-[5px]" style="color: #3fb9df;"></i>
+                  <p>{{ Math.round(day.temp.min) }}&deg</p>
+                </div>
+              </div>
+              <div v-else class="flex flex-col gap-2 flex-1 justify-end">
+                <div class="flex flex-row gap-2">
+                  <i class="fa-solid fa-temperature-arrow-up translate-y-[3px]" style="color: #e9481f;"></i>
+                  <p>{{ Math.round((day.temp.max * 9 / 5) + 32) }}&deg</p>
+                </div>
+                <div class="flex flex-row gap-2">
+                  <i class="fa-solid fa-temperature-arrow-down translate-y-[5px]" style="color: #3fb9df;"></i>
+                  <p>{{ Math.round((day.temp.min * 9 / 5) + 32) }}&deg</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Remove City -->
-      <div class="rounded-xl max-w-screen-lg" :class="{ 'bg-night': timeOfDay === 'n', 'bg-day': timeOfDay === 'd' }">
+      <div class="rounded-xl max-w-screen-lg w-5/6"
+        :class="{ 'bg-night': timeOfDay === 'n', 'bg-day': timeOfDay === 'd' }">
         <div v-if="!route.query.preview" @click="removeLocation"
           class="flex items-center justify-center gap-2 py-5 text-white cursor-pointer duration-150 rounded-xl hover:text-black hover:bg-red-800">
-          <i class="fa-solid fa-trash"></i>
-          <p>Remove City</p>
+          <i class="fa-solid fa-trash -translate-y-[1px]"></i>
+          <p>Stop tracking this location</p>
         </div>
       </div>
 
