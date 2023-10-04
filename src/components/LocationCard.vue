@@ -1,36 +1,85 @@
 <template>
-    <div class="flex p-6 rounded-xl shadow-md cursor-pointer" :class="{ 'bg-night': timeOfDay === 'n', 'bg-day': timeOfDay === 'd' }">
-        <div class="flex flex-col flex-1">
-            <h2 class="text-4xl">{{ location.location }}</h2>
+    <div class="flex p-6 rounded-xl shadow-md cursor-pointer overflow-hidden transition hover:scale-105"
+        :class="{ 'bg-night': timeOfDay === 'n', 'bg-day': timeOfDay === 'd' }">
+        <div class="flex flex-col flex-1 relative">
+            <h2 class="text-4xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] z-20">{{ location.location }}</h2>
+            <!-- BG animated IMG -->
+            <div>
+                <img v-if="location.weather.weather[0].icon === '01d'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/day.svg"
+                    alt="weather icon" />
+
+                <img v-else-if="location.weather.weather[0].icon === '01n'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/night.svg"
+                    alt="weather icon" />
+
+                <img v-else-if="location.weather.weather[0].icon === '02d'" class="absolute z-10 w-96 -bottom-44 -left-2"
+                    src="../assets/icons/animated/cloudy-day-1.svg" alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '02n'" class="absolute z-10 w-96 -bottom-44 -left-2"
+                    src="../assets/icons/animated/cloudy-night-1.svg" alt="weather icon" />
+
+                <img v-else-if="location.weather.weather[0].icon === '03d'" class="absolute z-10 w-96 -bottom-44 -left-2"
+                    src="../assets/icons/animated/cloudy-day-2.svg" alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '03n'" class="absolute z-10 w-96 -bottom-44 -left-2"
+                    src="../assets/icons/animated/cloudy-night-2.svg" alt="weather icon" />
+
+                <img v-else-if="location.weather.weather[0].icon === '04d'" class="absolute z-10 w-96 -bottom-44 -left-2"
+                    src="../assets/icons/animated/cloudy-day-3.svg" alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '04n'" class="absolute z-10 w-96 -bottom-44 -left-2"
+                    src="../assets/icons/animated/cloudy-night-3.svg" alt="weather icon" />
+
+                <img v-else-if="location.weather.weather[0].icon === '09d'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/rainy-6.svg"
+                    alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '09n'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/rainy-6.svg"
+                    alt="weather icon" />
+
+                <img v-else-if="location.weather.weather[0].icon === '10d'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/rainy-3.svg"
+                    alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '10n'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/rainy-5.svg"
+                    alt="weather icon" />
+
+                <img v-else-if="location.weather.weather[0].icon === '11d'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/thunder.svg"
+                    alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '11n'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/thunder.svg"
+                    alt="weather icon" />
+
+                <img v-else-if="location.weather.weather[0].icon === '13d'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/snow-3.svg"
+                    alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '13n'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/snow-5.svg"
+                    alt="weather icon" />
+
+                <img v-else-if="location.weather.weather[0].icon === '50d'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/cloudy.svg"
+                    alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '50n'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/cloudy.svg"
+                    alt="weather icon" />
+            </div>
         </div>
 
         <div v-if="tempFormat" class="flex flex-col gap-2 font-SquadaOne">
-            <p class="text-5xl self-end">
+            <p class="text-5xl self-end drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)]">
                 {{ Math.round(location.weather.main.temp) }}&deg;
             </p>
-            <div class="flex gap-2">
-                <span class="text-sm">
-                    H:
+            <div class="flex gap-4 text-xl">
+                <span class="">
+                    <i class="fa-solid fa-temperature-arrow-up text-lg" style="color: #e9481f;"></i>
                     {{ Math.round(location.weather.main.temp_max) }}&deg;
                 </span>
-                <span class="text-sm">
-                    L:
+                <span class="">
+                    <i class="fa-solid fa-temperature-arrow-down text-lg" style="color: #3fb9df;"></i>
                     {{ Math.round(location.weather.main.temp_min) }}&deg;
                 </span>
             </div>
         </div>
 
         <div v-else class="flex flex-col gap-2 font-SquadaOne">
-            <p class="text-5xl self-end">
+            <p class="text-5xl self-end drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)]">
                 {{ Math.round((location.weather.main.temp * 9 / 5) + 32) }}&deg;
             </p>
-            <div class="flex gap-2">
-                <span class="text-sm">
-                    H:
+            <div class="flex gap-4 text-xl">
+                <span class="">
+                    <i class="fa-solid fa-temperature-arrow-up text-lg" style="color: #e9481f;"></i>
                     {{ Math.round((location.weather.main.temp_max * 9 / 5) + 32) }}&deg;
                 </span>
-                <span class="text-sm">
-                    L:
+                <span class="">
+                    <i class="fa-solid fa-temperature-arrow-down text-lg" style="color: #3fb9df;"></i>
                     {{ Math.round((location.weather.main.temp_min * 9 / 5) + 32) }}&deg;
                 </span>
             </div>

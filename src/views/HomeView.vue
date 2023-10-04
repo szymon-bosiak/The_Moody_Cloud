@@ -1,17 +1,17 @@
 <template>
   <main class="container text-white">
     <div class="pt-4 mb-8 relative">
-      <input type="text" v-model="searchQuery" @input="getSearchResults" placeholder="Search for a city or state"
+      <input type="text" v-model="searchQuery" @input="getSearchResults" @focus="inputFocus = true" @blur="inputFocus = false" placeholder="Enter location name"
         class="py-2 px-1 w-full bg-transparent border-b focus:border-weather-secondary focus:outline-none focus:shadow-[0px_1px_0_0_#004E71]" />
-      <ul class="absolute bg-weather-secondary text-white w-full shadow-md py-2 px-1 top-[66px]" v-if="searchResults">
-        <p v-if="searchError">There was an error performing your search.</p>
-        <p class="py-2" v-if="!searchError && searchResults.length === 0">
+      <ul class="absolute bg-weather-secondary text-white w-full shadow-xl py-2 px-1 top-[66px] z-30 rounded-md" v-if="searchResults && inputFocus">
+        <p class="py-2 mx-2" v-if="searchError">There was an error performing your search.</p>
+        <p class="py-2 mx-2" v-if="!searchError && searchResults.length === 0">
           No results has been found, try a different phrase.
         </p>
         <template v-else>
           <li v-for="searchResult in searchResults" @click="previewLocation(searchResult)" :key="searchResult.id"
-            class="py-2 cursor-pointer">
-            {{ searchResult.place_name }}
+            class="py-2 mx-2 cursor-pointer border-b border-weather-primary border-opacity-80">
+            <p class="hover:translate-x-2 transition-transform">{{ searchResult.place_name }}</p>
           </li>
         </template>
       </ul>
@@ -58,6 +58,7 @@ const searchQuery = ref('')
 const querryTimeout = ref(null)
 const searchResults = ref(null)
 const searchError = ref(null)
+const inputFocus = ref(false)
 
 const getSearchResults = () => {
   clearTimeout(querryTimeout.value)

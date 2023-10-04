@@ -1,17 +1,17 @@
 <template>
     <div>
         <Suspense>
-            <AsyncLocationView :tempFormat="tempFormat"/>
+            <LocationView :tempFormat="tempFormat"/>
             <template #fallback>
-                <AsyncLocationViewSkeleton />
+                <LocationViewSkeleton />
             </template>
         </Suspense>
     </div>
 </template>
 
 <script setup>
-import AsyncLocationView from '../components/AsyncLocationView.vue';
-import AsyncLocationViewSkeleton from '../components/AsyncLocationViewSkeleton.vue';
+import LocationView from '../components/LocationView.vue';
+import LocationViewSkeleton from '../components/LocationViewSkeleton.vue';
 
 defineProps({
     tempFormat: Boolean

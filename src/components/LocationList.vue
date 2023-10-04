@@ -4,8 +4,7 @@
     </div>
 
     <p v-if="savedLocations.length === 0">
-        No locations added. To start tracking a location, search in
-        the field above.
+        Currently you are not tracking any location.
     </p>
 </template>
 

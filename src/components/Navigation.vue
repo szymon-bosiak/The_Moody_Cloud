@@ -9,8 +9,6 @@
                 </RouterLink>
 
                 <div class="flex gap-3 flex-1 justify-end">
-                    <i @click="addLocation" v-if="route.query.preview"
-                        class="fa-solid fa-plus text-2xl hover:text-amber-500 duration-150 cursor-pointer"></i>
                     <i @click="toggleManual"
                         class="fa-solid fa-gear text-2xl hover:text-amber-500 duration-150 cursor-pointer"></i>
                 </div>
@@ -46,7 +44,6 @@
                                 </li>
                             </ol>
                         </div>
-
                         <div class="mb-4">
                             <h2 class="text-2xl">Removing a city:</h2>
                             <p>
@@ -55,7 +52,6 @@
                                 page, there will be am option to delete the city.
                             </p>
                         </div>
-
                     </div>
                 </Manual>
             </nav>
@@ -65,35 +61,8 @@
 
 <script setup>
 import { ref } from 'vue';
-import { RouterLink, useRoute, useRouter } from "vue-router";
-import { uid } from 'uid';
+import { RouterLink } from "vue-router";
 import Manual from './Manual.vue';
-
-const savedLocations = ref([])
-const route = useRoute()
-const router = useRouter()
-const addLocation = () => {
-    if (localStorage.getItem('savedLocations')) {
-        savedLocations.value = JSON.parse(localStorage.getItem('savedLocations'))
-    }
-
-    const locationObj = {
-        id: uid(),
-        location: route.params.location,
-        coordinates: {
-            lat: route.query.lat,
-            lng: route.query.lng,
-        }
-    }
-
-    savedLocations.value.push(locationObj)
-    localStorage.setItem('savedLocations', JSON.stringify(savedLocations.value))
-
-    let query = Object.assign({}, route.query)
-    delete query.preview
-    query.id = locationObj.id
-    router.replace({ query })
-}
 
 const manualActive = ref(null)
 const toggleManual = () => {
