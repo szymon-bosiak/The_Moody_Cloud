@@ -1,6 +1,7 @@
 <template>
     <div class="flex p-6 rounded-xl shadow-md cursor-pointer overflow-hidden transition hover:scale-105"
-        :class="{ 'bg-night': timeOfDay === 'n', 'bg-day': timeOfDay === 'd' }">
+        :class="{ 'bg-night': timeOfDay === 'n', 'bg-day': timeOfDay === 'd' }"
+        draggable="true">
         <div class="flex flex-col flex-1 relative">
             <h2 class="text-4xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] z-20">{{ location.location }}</h2>
             <!-- BG animated IMG -->
@@ -57,14 +58,14 @@
             <p class="text-5xl self-end drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)]">
                 {{ Math.round(location.weather.main.temp) }}&deg;
             </p>
-            <div class="flex gap-4 text-xl">
-                <span class="">
+            <div class="flex gap-3 text-xl">
+                <span class="flex justify-between gap-2">
                     <i class="fa-solid fa-temperature-arrow-up text-lg" style="color: #e9481f;"></i>
-                    {{ Math.round(location.weather.main.temp_max) }}&deg;
+                    <p class="w-6">{{ Math.round(location.weather.main.temp_max) }}&deg;</p>
                 </span>
-                <span class="">
+                <span class="flex justify-between gap-2">
                     <i class="fa-solid fa-temperature-arrow-down text-lg" style="color: #3fb9df;"></i>
-                    {{ Math.round(location.weather.main.temp_min) }}&deg;
+                    <p class="w-6">{{ Math.round(location.weather.main.temp_min) }}&deg;</p> 
                 </span>
             </div>
         </div>
@@ -73,14 +74,14 @@
             <p class="text-5xl self-end drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)]">
                 {{ Math.round((location.weather.main.temp * 9 / 5) + 32) }}&deg;
             </p>
-            <div class="flex gap-4 text-xl">
-                <span class="">
+            <div class="flex gap-3 text-xl">
+                <span class="flex justify-between gap-2">
                     <i class="fa-solid fa-temperature-arrow-up text-lg" style="color: #e9481f;"></i>
-                    {{ Math.round((location.weather.main.temp_max * 9 / 5) + 32) }}&deg;
+                    <p class="w-6">{{ Math.round((location.weather.main.temp_max * 9 / 5) + 32) }}&deg;</p> 
                 </span>
-                <span class="">
+                <span class="flex justify-between gap-2">
                     <i class="fa-solid fa-temperature-arrow-down text-lg" style="color: #3fb9df;"></i>
-                    {{ Math.round((location.weather.main.temp_min * 9 / 5) + 32) }}&deg;
+                    <p class="w-6">{{ Math.round((location.weather.main.temp_min * 9 / 5) + 32) }}&deg;</p> 
                 </span>
             </div>
         </div>
