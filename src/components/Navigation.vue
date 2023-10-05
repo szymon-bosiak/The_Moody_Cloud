@@ -43,13 +43,14 @@
                                     later time on the home page.
                                 </li>
                             </ol>
+                            <p class="mt-2">* Note that you can freely rearange tracked locations list.</p>
                         </div>
                         <div class="mb-4">
                             <h2 class="text-2xl">Removing a city:</h2>
                             <p>
                                 If you no longer wish to track a city, simply select
                                 the city within the home page. At the bottom of the
-                                page, there will be am option to delete the city.
+                                page, there will be an option to delete the city.
                             </p>
                         </div>
                     </div>

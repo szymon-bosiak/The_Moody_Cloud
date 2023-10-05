@@ -1,11 +1,15 @@
 <template>
-    <!-- <LocationCard v-for="location in savedLocations" :key="location.id" :location="location" :tempFormat="tempFormat" @click="goToLocationView(location)" /> -->
-    <draggable v-model="savedLocations" group="savedLocations" @start="drag = true" @end="drag = false">
-        <template #item="{ element }">
-            <LocationCard :location="element" :tempFormat="tempFormat" @click="goToLocationView(location)" class="mb-6"
-                :key="element.id" />
+    <draggable v-model="savedLocations" @change="updateList" group="savedLocations" itemKey="savedLocations.id"
+        @start="drag = false" @end="drag = false" drag-class="drag" ghost-class="ghost">
+        <template #item="{ element: location }">
+            <LocationCard @click="goToLocationView(location)" :location="location" :tempFormat="tempFormat" class="mb-6"
+                :key="location.id" />
         </template>
     </draggable>
+
+    <p v-if="savedLocations.length === 0">
+        Currently you are not tracking any location.
+    </p>
 </template>
 
 <script setup>
@@ -41,6 +45,10 @@ const getLocations = async () => {
     })
 }
 await getLocations()
+
+const updateList = () => {
+    localStorage.setItem('savedLocations', JSON.stringify(savedLocations.value))
+}
 
 const router = useRouter()
 const goToLocationView = (location) => {

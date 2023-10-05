@@ -27,8 +27,6 @@
 
 <script setup>
 import axios from 'axios';
-import { ref } from 'vue';
-import { uid } from 'uid';
 import { useRoute, useRouter } from 'vue-router';
 import { API_KEY_WEATHER } from '../API';
 import LocationViewLive from './LocationViewLive.vue';
@@ -77,30 +75,6 @@ const removeLocation = () => {
   router.push({
     name: 'home'
   })
-}
-
-const savedLocations = ref([])
-const addLocation = () => {
-  if (localStorage.getItem('savedLocations')) {
-    savedLocations.value = JSON.parse(localStorage.getItem('savedLocations'))
-  }
-
-  const locationObj = {
-    id: uid(),
-    location: route.params.location,
-    coordinates: {
-      lat: route.query.lat,
-      lng: route.query.lng,
-    }
-  }
-
-  savedLocations.value.push(locationObj)
-  localStorage.setItem('savedLocations', JSON.stringify(savedLocations.value))
-
-  let query = Object.assign({}, route.query)
-  delete query.preview
-  query.id = locationObj.id
-  router.replace({ query })
 }
 
 const timeOfDay = (weatherData.current.weather[0].icon).slice(2)

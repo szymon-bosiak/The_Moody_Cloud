@@ -1,56 +1,55 @@
 <template>
     <div class="flex p-6 rounded-xl shadow-md cursor-pointer overflow-hidden transition hover:scale-105"
-        :class="{ 'bg-night': timeOfDay === 'n', 'bg-day': timeOfDay === 'd' }"
-        draggable="true">
-        <div class="flex flex-col flex-1 relative">
+        :class="{ 'bg-night': (props.location.weather.weather[0].icon).slice(2) === 'n', 'bg-day': (props.location.weather.weather[0].icon).slice(2) === 'd' }">
+        <div class="flex flex-col flex-1 relative pt-4">
             <h2 class="text-4xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] z-20">{{ location.location }}</h2>
             <!-- BG animated IMG -->
             <div>
-                <img v-if="location.weather.weather[0].icon === '01d'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/day.svg"
-                    alt="weather icon" />
+                <img v-if="location.weather.weather[0].icon === '01d'" class="absolute z-10 w-96 -bottom-44 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.1)]"
+                    src="../assets/icons/animated/day.svg" alt="weather icon" />
 
-                <img v-else-if="location.weather.weather[0].icon === '01n'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/night.svg"
-                    alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '01n'" class="absolute z-10 w-96 -bottom-40 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.1)]"
+                    src="../assets/icons/animated/night.svg" alt="weather icon" />
 
-                <img v-else-if="location.weather.weather[0].icon === '02d'" class="absolute z-10 w-96 -bottom-44 -left-2"
+                <img v-else-if="location.weather.weather[0].icon === '02d'" class="absolute z-10 w-96 -bottom-44 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.1)]"
                     src="../assets/icons/animated/cloudy-day-1.svg" alt="weather icon" />
-                <img v-else-if="location.weather.weather[0].icon === '02n'" class="absolute z-10 w-96 -bottom-44 -left-2"
+                <img v-else-if="location.weather.weather[0].icon === '02n'" class="absolute z-10 w-96 -bottom-44 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.1)]"
                     src="../assets/icons/animated/cloudy-night-1.svg" alt="weather icon" />
 
-                <img v-else-if="location.weather.weather[0].icon === '03d'" class="absolute z-10 w-96 -bottom-44 -left-2"
+                <img v-else-if="location.weather.weather[0].icon === '03d'" class="absolute z-10 w-96 -bottom-44 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.1)]"
                     src="../assets/icons/animated/cloudy-day-2.svg" alt="weather icon" />
-                <img v-else-if="location.weather.weather[0].icon === '03n'" class="absolute z-10 w-96 -bottom-44 -left-2"
+                <img v-else-if="location.weather.weather[0].icon === '03n'" class="absolute z-10 w-96 -bottom-44 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.1)]"
                     src="../assets/icons/animated/cloudy-night-2.svg" alt="weather icon" />
 
-                <img v-else-if="location.weather.weather[0].icon === '04d'" class="absolute z-10 w-96 -bottom-44 -left-2"
+                <img v-else-if="location.weather.weather[0].icon === '04d'" class="absolute z-10 w-96 -bottom-44 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.1)]"
                     src="../assets/icons/animated/cloudy-day-3.svg" alt="weather icon" />
-                <img v-else-if="location.weather.weather[0].icon === '04n'" class="absolute z-10 w-96 -bottom-44 -left-2"
+                <img v-else-if="location.weather.weather[0].icon === '04n'" class="absolute z-10 w-96 -bottom-44 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.1)]"
                     src="../assets/icons/animated/cloudy-night-3.svg" alt="weather icon" />
 
-                <img v-else-if="location.weather.weather[0].icon === '09d'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/rainy-6.svg"
-                    alt="weather icon" />
-                <img v-else-if="location.weather.weather[0].icon === '09n'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/rainy-6.svg"
-                    alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '09d'" class="absolute z-10 w-96 -bottom-28 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.2)]"
+                    src="../assets/icons/animated/rainy-6.svg" alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '09n'" class="absolute z-10 w-96 -bottom-28 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.2)]"
+                    src="../assets/icons/animated/rainy-6.svg" alt="weather icon" />
 
-                <img v-else-if="location.weather.weather[0].icon === '10d'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/rainy-3.svg"
-                    alt="weather icon" />
-                <img v-else-if="location.weather.weather[0].icon === '10n'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/rainy-5.svg"
-                    alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '10d'" class="absolute z-10 w-96 -bottom-28 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.2)]"
+                    src="../assets/icons/animated/rainy-3.svg" alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '10n'" class="absolute z-10 w-96 -bottom-28 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.2)]"
+                    src="../assets/icons/animated/rainy-5.svg" alt="weather icon" />
 
-                <img v-else-if="location.weather.weather[0].icon === '11d'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/thunder.svg"
-                    alt="weather icon" />
-                <img v-else-if="location.weather.weather[0].icon === '11n'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/thunder.svg"
-                    alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '11d'" class="absolute z-10 w-96 -bottom-28 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.2)]"
+                    src="../assets/icons/animated/thunder.svg" alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '11n'" class="absolute z-10 w-96 -bottom-28 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.2)]"
+                    src="../assets/icons/animated/thunder.svg" alt="weather icon" />
 
-                <img v-else-if="location.weather.weather[0].icon === '13d'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/snow-3.svg"
-                    alt="weather icon" />
-                <img v-else-if="location.weather.weather[0].icon === '13n'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/snow-5.svg"
-                    alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '13d'" class="absolute z-10 w-96 -bottom-28 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.2)]"
+                    src="../assets/icons/animated/snow-3.svg" alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '13n'" class="absolute z-10 w-96 -bottom-28 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.2)]"
+                    src="../assets/icons/animated/snow-5.svg" alt="weather icon" />
 
-                <img v-else-if="location.weather.weather[0].icon === '50d'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/cloudy.svg"
-                    alt="weather icon" />
-                <img v-else-if="location.weather.weather[0].icon === '50n'" class="absolute z-10 w-96 -bottom-44 -left-2" src="../assets/icons/animated/cloudy.svg"
-                    alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '50d'" class="absolute z-10 w-96 -bottom-44 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.1)]"
+                    src="../assets/icons/animated/cloudy.svg" alt="weather icon" />
+                <img v-else-if="location.weather.weather[0].icon === '50n'" class="absolute z-10 w-96 -bottom-44 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.1)]"
+                    src="../assets/icons/animated/cloudy.svg" alt="weather icon" />
             </div>
         </div>
 
@@ -65,7 +64,7 @@
                 </span>
                 <span class="flex justify-between gap-2">
                     <i class="fa-solid fa-temperature-arrow-down text-lg" style="color: #3fb9df;"></i>
-                    <p class="w-6">{{ Math.round(location.weather.main.temp_min) }}&deg;</p> 
+                    <p class="w-6">{{ Math.round(location.weather.main.temp_min) }}&deg;</p>
                 </span>
             </div>
         </div>
@@ -77,11 +76,11 @@
             <div class="flex gap-3 text-xl">
                 <span class="flex justify-between gap-2">
                     <i class="fa-solid fa-temperature-arrow-up text-lg" style="color: #e9481f;"></i>
-                    <p class="w-6">{{ Math.round((location.weather.main.temp_max * 9 / 5) + 32) }}&deg;</p> 
+                    <p class="w-6">{{ Math.round((location.weather.main.temp_max * 9 / 5) + 32) }}&deg;</p>
                 </span>
                 <span class="flex justify-between gap-2">
                     <i class="fa-solid fa-temperature-arrow-down text-lg" style="color: #3fb9df;"></i>
-                    <p class="w-6">{{ Math.round((location.weather.main.temp_min * 9 / 5) + 32) }}&deg;</p> 
+                    <p class="w-6">{{ Math.round((location.weather.main.temp_min * 9 / 5) + 32) }}&deg;</p>
                 </span>
             </div>
         </div>
@@ -96,6 +95,7 @@ const props = defineProps({
     },
     tempFormat: Boolean,
 })
-
-const timeOfDay = (props.location.weather.weather[0].icon).slice(2)
 </script>
+
+<style scoped>
+</style>

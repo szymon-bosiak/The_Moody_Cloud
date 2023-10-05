@@ -3,13 +3,12 @@
         :class="{ 'bg-night': timeOfDay === 'n', 'bg-day': timeOfDay === 'd' }">
 
         <!-- Preview mode -->
-        <div v-if="route.query.preview" class="text-white p-4 bg-weather-primary text-center rounded-xl -translate-y-1 ">
+        <div v-if="route.query.preview" @click="addLocation"
+            class="text-white py-3 px-8 bg-weather-primary rounded-xl -translate-y-1 flex justify-center items-center hover:text-amber-400 duration-150 cursor-pointer">
             <p>
-                You are currently previewing this location, click the "+"
-                icon to pin this it onto home screen.
+                Add this location to your tracking list
             </p>
-            <i @click="addLocation" v-if="route.query.preview"
-                class="fa-solid fa-plus text-2xl hover:text-amber-500 duration-150 cursor-pointer"></i>
+            <i class="fa-solid fa-plus text-xl ml-2"></i>
         </div>
 
         <!-- Live weather -->
@@ -199,6 +198,10 @@
 </template>
 
 <script setup>
+import { useRoute, useRouter } from 'vue-router';
+import { ref } from 'vue';
+import { uid } from 'uid';
+
 defineProps({
     weatherData: {
         type: Object,
@@ -207,6 +210,32 @@ defineProps({
     timeOfDay: String,
 })
 
-import { useRoute } from 'vue-router';
 const route = useRoute()
+const router = useRouter()
+
+const savedLocations = ref([])
+const addLocation = () => {
+    if (localStorage.getItem('savedLocations')) {
+        savedLocations.value = JSON.parse(localStorage.getItem('savedLocations'))
+    }
+
+    const locationObj = {
+        id: uid(),
+        location: route.params.location,
+        coordinates: {
+            lat: route.query.lat,
+            lng: route.query.lng,
+        }
+    }
+
+    savedLocations.value.push(locationObj)
+    localStorage.setItem('savedLocations', JSON.stringify(savedLocations.value))
+
+    let query = Object.assign({}, route.query)
+    delete query.preview
+    query.id = locationObj.id
+    router.replace({ query })
+}
+
+
 </script>
