@@ -70,6 +70,7 @@ const toggleManual = () => {
     manualActive.value = !manualActive.value
 }
 
+
 const savedTempFormat = JSON.parse(localStorage.tempFormat)
 const tempFormat = ref(savedTempFormat)
 const toggleTemp = () => {

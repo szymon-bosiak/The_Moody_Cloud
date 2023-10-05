@@ -14,6 +14,12 @@ import { ref } from 'vue';
 import { RouterView } from 'vue-router';
 import Navigation from './components/Navigation.vue';
 
+
+
+if (localStorage.getItem('tempFormat') == null) {
+  localStorage.tempFormat = JSON.parse(true)
+}
+
 const savedTempFormat = JSON.parse(localStorage.tempFormat)
 const tempFormat = ref(savedTempFormat)
 const ToggleTemp = () => {
