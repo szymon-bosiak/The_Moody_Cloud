@@ -1,5 +1,6 @@
 <template>
-    <div class="flex p-6 rounded-xl shadow-md cursor-pointer overflow-hidden transition hover:scale-105"
+    <div class="flex justify-center">
+    <div class="w-5/6 flex justify-center p-6 rounded-xl shadow-md cursor-pointer overflow-hidden transition hover:scale-105"
         :class="{ 'bg-night': (props.location.weather.weather[0].icon).slice(2) === 'n', 'bg-day': (props.location.weather.weather[0].icon).slice(2) === 'd' }">
         <div class="flex flex-col flex-1 relative pt-4">
             <h2 class="text-4xl drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)] z-20">{{ location.location }}</h2>
@@ -84,6 +85,7 @@
                 </span>
             </div>
         </div>
+    </div>
     </div>
 </template>
 

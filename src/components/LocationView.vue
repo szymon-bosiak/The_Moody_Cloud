@@ -1,6 +1,6 @@
 <template>
-  <div class="flex justify-center items-center py-6">
-    <div class="w-5/6 flex flex-1 flex-col items-center">
+  <div class="md:container flex justify-center items-center py-6">
+    <div class="w-full md:w-5/6 flex flex-1 flex-col items-center">
 
       <!-- Main display -->
       <LocationViewLive :weatherData="weatherData" :tempFormat="tempFormat" :timeOfDay="timeOfDay"/>

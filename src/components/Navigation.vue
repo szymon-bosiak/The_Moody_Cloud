@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-center">
-        <header class="sticky top-0 bg-weather-primary shadow-lg rounded-xl w-5/6 flex justify-center items-center mt-6">
+        <header class="sticky top-0 bg-weather-primary shadow-lg rounded-xl w-5/6 flex justify-center items-center mt-6 max-w-screen-2xl">
             <nav class="w-full px-11 flex flex-row items-center gap-4 text-white py-6">
                 <RouterLink :to="{ name: 'home' }">
                     <div class="flex items-center gap-3">

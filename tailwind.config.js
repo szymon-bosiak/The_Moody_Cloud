@@ -11,6 +11,7 @@ module.exports = {
         "background": "#1F282F",
       },
       fontSize: {
+        big: '20rem',
         huge: '28rem',
       },
     },
@@ -23,10 +24,12 @@ module.exports = {
       center: true,
     },
     screens: {
+      xs: "580px",
       sm: "640px",
       md: "768px",
       lg: "1024px",
       xl: "1280px",
+      '2xl': "1536px",
     },
   },
   plugins: [
