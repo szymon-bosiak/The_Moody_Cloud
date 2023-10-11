@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-center">
-        <header class="sticky top-0 bg-weather-primary shadow-lg rounded-xl w-5/6 flex justify-center items-center mt-6 max-w-screen-2xl">
+        <header class=" top-0 bg-weather-primary shadow-lg rounded-xl w-5/6 flex justify-center items-center mt-6 max-w-screen-2xl">
             <nav class="w-full px-11 flex flex-row items-center gap-4 text-white py-6">
                 <RouterLink :to="{ name: 'home' }">
                     <div class="flex items-center gap-3">
@@ -15,7 +15,7 @@
 
                 <Manual :manualActive="manualActive" @close-manual="toggleManual">
                     <div class="text-black">
-                        <div class="flex gap-8 items-center mb-4">
+                        <div class="flex flex-col xs:flex-row xs:items-center gap-3 xs:gap-8 mb-4">
                             <h1 class="text-2xl mb-1">Temperature scale preference:</h1>
                             <div @click="toggleTemp(); $emit('tempFormat')"
                                 class="flex items-center bg-gray-300 rounded-full w-14 h-8 p-1 cursor-pointer">
@@ -46,7 +46,7 @@
                             <p class="mt-2">* Note that you can freely rearange tracked locations list.</p>
                         </div>
                         <div class="mb-4">
-                            <h2 class="text-2xl">Removing a city:</h2>
+                            <h2 class="text-2xl">Removing from tracked:</h2>
                             <p>
                                 If you no longer wish to track a city, simply select
                                 the city within the home page. At the bottom of the
