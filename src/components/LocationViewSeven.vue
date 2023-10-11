@@ -4,8 +4,9 @@
         <div class="mx-8 text-white">
             <h2 class="mb-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.6)]">7 Day Forecast</h2>
             <div v-for="day in weatherData.daily" :key="day.dt"
-                class="flex items-center justify-between border-2 rounded-xl mb-5 px-6 shadow-lg overflow-hidden">
-                <div class="flex flex-col w-16 gap-2">
+                class="flex items-center justify-between border-2 rounded-xl mb-5 px-6 shadow-lg h-28 overflow-hidden">
+                <div
+                    class="flex flex-col w-16 gap-2 realtive z-20 drop-shadow-[0_2px_2px_rgba(0,0,0,0.6)] xs:drop-shadow-none">
                     <p class="text-2xl">
                         {{
                             new Date(day.dt * 1000).toLocaleDateString(
@@ -30,7 +31,7 @@
                 </div>
 
                 <!-- Conditional IMGs -->
-                <div class="flex justify-center items-center relative">
+                <div class="flex justify-center items-center relative z-10">
 
                     <!-- Backdrop -->
                     <div class="relative">
@@ -39,55 +40,99 @@
                         </div>
                     </div>
 
-                    <img v-if="day.weather[0].icon === '01d'" class="w-40 z-10" src="../assets/icons/static/day.svg"
-                        alt="weather icon" />
+                    <div v-if="day.weather[0].icon === '01d'"
+                        class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
+                        <img class="w-full h-full " src="../assets/icons/static/day.svg" alt="weather icon" />
+                    </div>
 
-                    <img v-else-if="day.weather[0].icon === '01n'" class="w-40 z-10" src="../assets/icons/static/night.svg"
-                        alt="weather icon" />
+                    <div v-else-if="day.weather[0].icon === '01n'"
+                        class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
+                        <img class="w-full h-full " src="../assets/icons/static/night.svg" alt="weather icon" />
+                    </div>
 
-                    <img v-else-if="day.weather[0].icon === '02d'" class="w-40 z-10"
-                        src="../assets/icons/static/cloudy-day-1.svg" alt="weather icon" />
-                    <img v-else-if="day.weather[0].icon === '02n'" class="w-40 z-10"
-                        src="../assets/icons/static/cloudy-night-1.svg" alt="weather icon" />
+                    <div v-else-if="day.weather[0].icon === '02d'"
+                        class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
+                        <img class="w-full h-full " src="../assets/icons/static/cloudy-day-1.svg" alt="weather icon" />
+                    </div>
 
-                    <img v-else-if="day.weather[0].icon === '03d'" class="w-40 z-10"
-                        src="../assets/icons/static/cloudy-day-2.svg" alt="weather icon" />
-                    <img v-else-if="day.weather[0].icon === '03n'" class="w-40 z-10"
-                        src="../assets/icons/static/cloudy-night-2.svg" alt="weather icon" />
+                    <div v-else-if="day.weather[0].icon === '02n'"
+                        class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
+                        <img class="w-full h-full " src="../assets/icons/static/cloudy-night-1.svg" alt="weather icon" />
+                    </div>
 
-                    <img v-else-if="day.weather[0].icon === '04d'" class="w-40 z-10"
-                        src="../assets/icons/static/cloudy-day-3.svg" alt="weather icon" />
-                    <img v-else-if="day.weather[0].icon === '04n'" class="w-40 z-10"
-                        src="../assets/icons/static/cloudy-night-3.svg" alt="weather icon" />
+                    <div v-else-if="day.weather[0].icon === '03d'"
+                        class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
+                        <img class="w-full h-full " src="../assets/icons/static/cloudy-day-2.svg" alt="weather icon" />
+                    </div>
 
-                    <img v-else-if="day.weather[0].icon === '09d'" class="w-40 z-10"
-                        src="../assets/icons/static/rainy-6.svg" alt="weather icon" />
-                    <img v-else-if="day.weather[0].icon === '09n'" class="w-40 z-10"
-                        src="../assets/icons/static/rainy-6.svg" alt="weather icon" />
+                    <div v-else-if="day.weather[0].icon === '03n'"
+                        class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
+                        <img class="w-full h-full " src="../assets/icons/static/cloudy-night-2.svg" alt="weather icon" />
+                    </div>
 
-                    <img v-else-if="day.weather[0].icon === '10d'" class="w-40 z-10"
-                        src="../assets/icons/static/rainy-3.svg" alt="weather icon" />
-                    <img v-else-if="day.weather[0].icon === '10n'" class="w-40 z-10"
-                        src="../assets/icons/static/rainy-5.svg" alt="weather icon" />
+                    <div v-else-if="day.weather[0].icon === '04d'"
+                        class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
+                        <img class="w-full h-full " src="../assets/icons/static/cloudy-day-3.svg" alt="weather icon" />
+                    </div>
 
-                    <img v-else-if="day.weather[0].icon === '11d'" class="w-40 z-10"
-                        src="../assets/icons/static/thunder.svg" alt="weather icon" />
-                    <img v-else-if="day.weather[0].icon === '11n'" class="w-40 z-10"
-                        src="../assets/icons/static/thunder.svg" alt="weather icon" />
+                    <div v-else-if="day.weather[0].icon === '04n'"
+                        class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
+                        <img class="w-full h-full " src="../assets/icons/static/cloudy-night-3.svg" alt="weather icon" />
+                    </div>
 
-                    <img v-else-if="day.weather[0].icon === '13d'" class="w-40 z-10" src="../assets/icons/static/snow-3.svg"
-                        alt="weather icon" />
-                    <img v-else-if="day.weather[0].icon === '13n'" class="w-40 z-10" src="../assets/icons/static/snow-5.svg"
-                        alt="weather icon" />
+                    <div v-else-if="day.weather[0].icon === '09d'"
+                        class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
+                        <img class="w-full h-full " src="../assets/icons/static/rainy-6.svg" alt="weather icon" />
+                    </div>
 
-                    <img v-else-if="day.weather[0].icon === '50d'" class="w-40 z-10" src="../assets/icons/static/cloudy.svg"
-                        alt="weather icon" />
-                    <img v-else-if="day.weather[0].icon === '50n'" class="w-40 z-10" src="../assets/icons/static/cloudy.svg"
-                        alt="weather icon" />
+                    <div v-else-if="day.weather[0].icon === '09n'"
+                        class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
+                        <img class="w-full h-full " src="../assets/icons/static/rainy-6.svg" alt="weather icon" />
+                    </div>
 
+                    <div v-else-if="day.weather[0].icon === '10d'"
+                        class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
+                        <img class="w-full h-full " src="../assets/icons/static/rainy-3.svg" alt="weather icon" />
+                    </div>
+
+                    <div v-else-if="day.weather[0].icon === '10n'"
+                        class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
+                        <img class="w-full h-full " src="../assets/icons/static/rainy-5.svg" alt="weather icon" />
+                    </div>
+
+                    <div v-else-if="day.weather[0].icon === '11d'"
+                        class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
+                        <img class="w-full h-full " src="../assets/icons/static/thunder.svg" alt="weather icon" />
+                    </div>
+
+                    <div v-else-if="day.weather[0].icon === '11n'"
+                        class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
+                        <img class="w-full h-full " src="../assets/icons/static/thunder.svg" alt="weather icon" />
+                    </div>
+
+                    <div v-else-if="day.weather[0].icon === '13d'"
+                        class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
+                        <img class="w-full h-full " src="../assets/icons/static/snow-3.svg" alt="weather icon" />
+                    </div>
+
+
+                    <div v-else-if="day.weather[0].icon === '13n'"
+                        class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
+                        <img class="w-full h-full " src="../assets/icons/static/snow-5.svg" alt="weather icon" />
+                    </div>
+
+                    <div v-else-if="day.weather[0].icon === '50d'"
+                        class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
+                        <img class="w-full h-full " src="../assets/icons/static/cloudy.svg" alt="weather icon" />
+                    </div>
+
+                    <div v-else-if="day.weather[0].icon === '50n'"
+                        class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
+                        <img class="w-full h-full " src="../assets/icons/static/cloudy.svg" alt="weather icon" />
+                    </div>
                 </div>
 
-                <div class="text-xl">
+                <div class="text-xl relative z-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.4)] xs:drop-shadow-none">
                     <div v-if="tempFormat" class="flex flex-col gap-2 flex-1 justify-end">
                         <div class="flex flex-row gap-2">
                             <i class="fa-solid fa-temperature-arrow-up translate-y-[3px]" style="color: #e9481f;"></i>
