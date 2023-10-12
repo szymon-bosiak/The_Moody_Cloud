@@ -12,7 +12,7 @@
         </div>
 
         <!-- Live weather -->
-        <div class="flex flex-col items-center text-white py-12 w-full">
+        <div class="flex flex-col items-center text-white pt-12 w-full">
             <div class="w-full relative z-10 px-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.6)]">
                 <h1 class="text-5xl mb-2">{{ route.params.location }}</h1>
                 <p class="text-sm mb-12">
@@ -46,31 +46,28 @@
                     </p>
                 </div>
 
-
                 <!-- Conditional IMGs -->
                 <div>
                     <div v-if="weatherData.current.weather[0].icon === '01d'"
                         class="w-[1200px] absolute -bottom-72 -left-72 xs:-bottom-28 xs:-left-44 lg:left-2">
-                        <img class="w-full"
-                        src="../assets/icons/animated/day.svg" alt="weather icon" />
+                        <img class="w-full" src="../assets/icons/animated/day.svg" alt="weather icon" />
                     </div>
                     <div v-else-if="weatherData.current.weather[0].icon === '01n'"
                         class="w-[800px] xs:w-[1000px] absolute -bottom-28 -right-56 xs:-bottom-10 xs:-right-80 lg:left-20">
-                        <img class="w-full"
-                        src="../assets/icons/animated/night.svg" alt="weather icon" />
+                        <img class="w-full" src="../assets/icons/animated/night.svg" alt="weather icon" />
                     </div>
 
                     <div v-else-if="weatherData.current.weather[0].icon === '02d'"
                         class="w-[800px] xs:w-[1000px] absolute bottom-0 -right-40">
                         <img class="w-full absolute -bottom-32 -right-72 xs:-right-96"
-                        src="../assets/icons/animated/cloudy-day-1.svg" alt="weather icon" />
+                            src="../assets/icons/animated/cloudy-day-1.svg" alt="weather icon" />
                         <img class="w-full absolute -bottom-80 -left-56 -translate-x-3 xs:-left-72 lg:-left-96 lg:-translate-x-20"
-                        src="../assets/icons/animated/cloudy-day-1.svg" alt="weather icon" />
+                            src="../assets/icons/animated/cloudy-day-1.svg" alt="weather icon" />
                     </div>
                     <div v-else-if="weatherData.current.weather[0].icon === '02n'"
                         class="w-[800px] xs:w-[1000px] absolute bottom-0 -right-40">
-                        <img class="w-full absolute -bottom-20 -right-64 xs:-bottom-20 xs:-right-80" src="../assets/icons/animated/cloudy-night-1.svg"
-                            alt="weather icon" />
+                        <img class="w-full absolute -bottom-20 -right-64 xs:-bottom-20 xs:-right-80"
+                            src="../assets/icons/animated/cloudy-night-1.svg" alt="weather icon" />
                         <img class="w-full absolute -bottom-80 -left-44 -translate-x-3 xs:-left-64 lg:-left-96 lg:-translate-x-20"
                             src="../assets/icons/animated/cloudy-night-1.svg" alt="weather icon" />
                     </div>
@@ -78,14 +75,14 @@
                     <div v-else-if="weatherData.current.weather[0].icon === '03d'"
                         class="w-[800px] xs:w-[1000px] absolute bottom-0 -right-40">
                         <img class="w-full absolute -bottom-32 -right-72 xs:-right-96"
-                        src="../assets/icons/animated/cloudy-day-2.svg" alt="weather icon" />
+                            src="../assets/icons/animated/cloudy-day-2.svg" alt="weather icon" />
                         <img class="w-full absolute -bottom-80 -left-56 -translate-x-3 xs:-left-72 lg:-left-96 lg:-translate-x-20"
-                        src="../assets/icons/animated/cloudy-day-2.svg" alt="weather icon" />
+                            src="../assets/icons/animated/cloudy-day-2.svg" alt="weather icon" />
                     </div>
                     <div v-else-if="weatherData.current.weather[0].icon === '03n'"
                         class="w-[800px] xs:w-[1000px] absolute bottom-0 -right-40">
-                        <img class="w-full absolute -bottom-20 -right-64 xs:-bottom-20 xs:-right-80" src="../assets/icons/animated/cloudy-night-2.svg"
-                            alt="weather icon" />
+                        <img class="w-full absolute -bottom-20 -right-64 xs:-bottom-20 xs:-right-80"
+                            src="../assets/icons/animated/cloudy-night-2.svg" alt="weather icon" />
                         <img class="w-full absolute -bottom-80 -left-44 -translate-x-3 xs:-left-64 lg:-left-96 lg:-translate-x-20"
                             src="../assets/icons/animated/cloudy-night-2.svg" alt="weather icon" />
                     </div>
@@ -93,14 +90,14 @@
                     <div v-else-if="weatherData.current.weather[0].icon === '04d'"
                         class="w-[800px] xs:w-[1000px] absolute bottom-0 -right-40">
                         <img class="w-full absolute -bottom-32 -right-72 xs:-right-96"
-                        src="../assets/icons/animated/cloudy-day-3.svg" alt="weather icon" />
+                            src="../assets/icons/animated/cloudy-day-3.svg" alt="weather icon" />
                         <img class="w-full absolute -bottom-80 -left-56 -translate-x-3 xs:-left-72 lg:-left-96 lg:-translate-x-20"
-                        src="../assets/icons/animated/cloudy-day-3.svg" alt="weather icon" />
+                            src="../assets/icons/animated/cloudy-day-3.svg" alt="weather icon" />
                     </div>
                     <div v-else-if="weatherData.current.weather[0].icon === '04n'"
                         class="w-[800px] xs:w-[1000px] absolute bottom-0 -right-40">
-                        <img class="w-full absolute -bottom-20 -right-64 xs:-bottom-20 xs:-right-80" src="../assets/icons/animated/cloudy-night-3.svg"
-                            alt="weather icon" />
+                        <img class="w-full absolute -bottom-20 -right-64 xs:-bottom-20 xs:-right-80"
+                            src="../assets/icons/animated/cloudy-night-3.svg" alt="weather icon" />
                         <img class="w-full absolute -bottom-80 -left-44 -translate-x-3 xs:-left-64 lg:-left-96 lg:-translate-x-20"
                             src="../assets/icons/animated/cloudy-night-3.svg" alt="weather icon" />
                     </div>
@@ -108,83 +105,83 @@
                     <div v-else-if="weatherData.current.weather[0].icon === '09d'"
                         class="w-[800px] xs:w-[1000px] absolute bottom-0 -right-40">
                         <img class="w-full absolute -bottom-32 -right-52 xs:bottom-0 xs:-right-96 lg:-right-64"
-                        src="../assets/icons/animated/rainy-6.svg" alt="weather icon" />
+                            src="../assets/icons/animated/rainy-6.svg" alt="weather icon" />
                         <img class="w-full absolute -scale-x-100 -bottom-72 -left-52 -translate-x-3 xs:-left-52 lg:-left-96"
-                        src="../assets/icons/animated/rainy-6.svg" alt="weather icon" />
+                            src="../assets/icons/animated/rainy-6.svg" alt="weather icon" />
                     </div>
                     <div v-else-if="weatherData.current.weather[0].icon === '09n'"
                         class="w-[800px] xs:w-[1000px] absolute bottom-0 -right-40">
                         <img class="w-full absolute -bottom-32 -right-52 xs:bottom-0 xs:-right-96 lg:-right-64"
-                        src="../assets/icons/animated/rainy-6.svg" alt="weather icon" />
+                            src="../assets/icons/animated/rainy-6.svg" alt="weather icon" />
                         <img class="w-full absolute -scale-x-100 -bottom-72 -left-52 -translate-x-3 xs:-left-52 lg:-left-96"
-                        src="../assets/icons/animated/rainy-6.svg" alt="weather icon" />
+                            src="../assets/icons/animated/rainy-6.svg" alt="weather icon" />
                     </div>
 
                     <div v-else-if="weatherData.current.weather[0].icon === '10d'"
                         class="w-[800px] xs:w-[1000px] absolute bottom-0 -right-40">
                         <img class="w-full absolute -bottom-32 -right-72 xs:-right-96"
-                        src="../assets/icons/animated/rainy-3.svg" alt="weather icon" />
+                            src="../assets/icons/animated/rainy-3.svg" alt="weather icon" />
                         <img class="w-full absolute -bottom-72 -left-56 -translate-x-3 xs:-left-72 lg:-left-96 lg:-translate-x-20"
-                        src="../assets/icons/animated/rainy-3.svg" alt="weather icon" />
+                            src="../assets/icons/animated/rainy-3.svg" alt="weather icon" />
                     </div>
                     <div v-else-if="weatherData.current.weather[0].icon === '10n'"
                         class="w-[800px] xs:w-[1000px] absolute bottom-0 -right-40">
                         <img class="w-full absolute -bottom-32 -right-52 xs:bottom-0 xs:-right-96 lg:-right-64"
-                        src="../assets/icons/animated/rainy-5.svg" alt="weather icon" />
+                            src="../assets/icons/animated/rainy-5.svg" alt="weather icon" />
                         <img class="w-full absolute -scale-x-100 -bottom-72 -left-52 -translate-x-3 xs:-left-52 lg:-left-96"
-                        src="../assets/icons/animated/rainy-5.svg" alt="weather icon" />
+                            src="../assets/icons/animated/rainy-5.svg" alt="weather icon" />
                     </div>
 
                     <div v-else-if="weatherData.current.weather[0].icon === '11d'"
                         class="w-[800px] xs:w-[1000px] absolute bottom-0 -right-40">
                         <img class="w-full absolute -bottom-20 -right-52 xs:bottom-0 xs:-right-80 lg:-right-64"
-                        src="../assets/icons/animated/thunder.svg" alt="weather icon" />
+                            src="../assets/icons/animated/thunder.svg" alt="weather icon" />
                         <img class="w-full absolute -scale-x-100 -bottom-64 -left-52 -translate-x-3 xs:-left-52 lg:-left-80"
-                        src="../assets/icons/animated/thunder.svg" alt="weather icon" />
+                            src="../assets/icons/animated/thunder.svg" alt="weather icon" />
                     </div>
                     <div v-else-if="weatherData.current.weather[0].icon === '11n'"
                         class="w-[800px] xs:w-[1000px] absolute bottom-0 -right-40">
                         <img class="w-full absolute -bottom-20 -right-52 xs:bottom-0 xs:-right-80 lg:-right-64"
-                        src="../assets/icons/animated/thunder.svg" alt="weather icon" />
+                            src="../assets/icons/animated/thunder.svg" alt="weather icon" />
                         <img class="w-full absolute -scale-x-100 -bottom-64 -left-52 -translate-x-3 xs:-left-52 lg:-left-80"
-                        src="../assets/icons/animated/thunder.svg" alt="weather icon" />
+                            src="../assets/icons/animated/thunder.svg" alt="weather icon" />
                     </div>
 
                     <div v-else-if="weatherData.current.weather[0].icon === '13d'"
                         class="w-[800px] xs:w-[1000px] absolute bottom-0 -right-40">
                         <img class="w-full absolute -bottom-28 -right-72 xs:-right-80"
-                        src="../assets/icons/animated/snowy-3.svg" alt="weather icon" />
+                            src="../assets/icons/animated/snowy-3.svg" alt="weather icon" />
                         <img class="w-full absolute -bottom-80 -left-56 -translate-x-2 xs:-left-72 lg:-left-96 lg:-translate-x-20"
-                        src="../assets/icons/animated/snowy-3.svg" alt="weather icon" />
+                            src="../assets/icons/animated/snowy-3.svg" alt="weather icon" />
                     </div>
                     <div v-else-if="weatherData.current.weather[0].icon === '13n'"
                         class="w-[800px] xs:w-[1000px] absolute bottom-0 -right-40">
                         <img class="w-full absolute -bottom-28 -right-72 xs:-right-80"
-                        src="../assets/icons/animated/snowy-3.svg" alt="weather icon" />
+                            src="../assets/icons/animated/snowy-3.svg" alt="weather icon" />
                         <img class="w-full absolute -bottom-80 -left-56 -translate-x-2 xs:-left-72 lg:-left-96 lg:-translate-x-20"
-                        src="../assets/icons/animated/snowy-3.svg" alt="weather icon" />
+                            src="../assets/icons/animated/snowy-3.svg" alt="weather icon" />
                     </div>
 
                     <div v-else-if="weatherData.current.weather[0].icon === '50d'"
                         class="w-[800px] xs:w-[1000px] absolute bottom-0 -right-40">
                         <img class="w-full absolute -bottom-28 -right-72 xs:-right-80"
-                        src="../assets/icons/animated/cloudy.svg" alt="weather icon" />
+                            src="../assets/icons/animated/cloudy.svg" alt="weather icon" />
                         <img class="w-full absolute -bottom-64 -left-56 -translate-x-2 xs:-left-72 lg:-left-96 lg:-translate-x-20"
-                        src="../assets/icons/animated/cloudy.svg" alt="weather icon" />
+                            src="../assets/icons/animated/cloudy.svg" alt="weather icon" />
                         <img class="w-full absolute -top-64 -right-40 xs:-top-96 xs:-right-44 -scale-x-100"
-                        src="../assets/icons/animated/cloudy.svg" alt="weather icon" />
+                            src="../assets/icons/animated/cloudy.svg" alt="weather icon" />
                     </div>
 
                     <div v-else-if="weatherData.current.weather[0].icon === '50n'"
                         class="w-[800px] xs:w-[1000px] absolute bottom-0 -right-40">
                         <img class="w-[700px] absolute -bottom-20 right-48 xs:bottom-6 xs:right-72 lg:right-96 lg:bottom-14"
                             src="../assets/icons/animated/night.svg" alt="weather icon" />
-                    <img class="w-full absolute -bottom-28 -right-72 xs:-right-80" src="../assets/icons/animated/cloudy.svg"
-                        alt="weather icon" />
-                    <img class="w-full absolute -bottom-64 -left-56 -translate-x-2 xs:-left-72 lg:-left-80 lg:-translate-x-20"
-                        src="../assets/icons/animated/cloudy.svg" alt="weather icon" />
-                    <img class="w-full absolute -top-64 -right-40 xs:-top-96 xs:-right-44 -scale-x-100"
-                        src="../assets/icons/animated/cloudy.svg" alt="weather icon" />
+                        <img class="w-full absolute -bottom-28 -right-72 xs:-right-80"
+                            src="../assets/icons/animated/cloudy.svg" alt="weather icon" />
+                        <img class="w-full absolute -bottom-64 -left-56 -translate-x-2 xs:-left-72 lg:-left-80 lg:-translate-x-20"
+                            src="../assets/icons/animated/cloudy.svg" alt="weather icon" />
+                        <img class="w-full absolute -top-64 -right-40 xs:-top-96 xs:-right-44 -scale-x-100"
+                            src="../assets/icons/animated/cloudy.svg" alt="weather icon" />
                     </div>
                 </div>
             </div>
@@ -203,6 +200,38 @@
                 <p class="capitalize ">
                     {{ weatherData.current.weather[0].description }}
                 </p>
+            </div>
+
+            <div
+                class="flex flex-col justify-center w-5/6 relative z-20 drop-shadow-[0_2px_2px_rgba(0,0,0,0.6)]  transition-all duration-500">
+                <div @click="showDetails"
+                    class="flex justify-center self-center mb-5 mt-4 transition-transform duration-300 place-self-center  "
+                    :class="{ '-scale-y-100': detailsStatus }">
+                    <i class="flex fa-solid fa-caret-down text-3xl cursor-pointer place-self-center "
+                        style="color: #00668A;"></i>
+                </div>
+
+                <div class="max-h-0 transition-all duration-500" :class="{ 'max-h-96': detailsStatus }">
+                    <div class="flex flex-row justify-between border-b border-amber-500 mb-2 p-2">
+                        <p>Wind:</p>
+                        <p>{{ weatherData.current.wind_speed }} km/h</p>
+                    </div>
+
+                    <div class="flex flex-row justify-between border-b border-amber-500 mb-2 p-2">
+                        <p>Humidity:</p>
+                        <p>{{ weatherData.current.humidity }} %</p>
+                    </div>
+
+                    <div class="flex flex-row justify-between border-b border-amber-500 mb-2 p-2">
+                        <p>Pressure:</p>
+                        <p>{{ weatherData.current.pressure }} hPa</p>
+                    </div>
+
+                    <div class="flex flex-row justify-between border-b border-amber-500 mb-8 p-2">
+                        <p>UV index:</p>
+                        <p>{{ (Math.round(weatherData.current.uvi) > 1) ? Math.round(weatherData.current.uvi) : 1 }}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -246,6 +275,11 @@ const addLocation = () => {
     delete query.preview
     query.id = locationObj.id
     router.replace({ query })
+}
+
+const detailsStatus = ref(false)
+const showDetails = () => {
+    detailsStatus.value = !detailsStatus.value
 }
 
 
