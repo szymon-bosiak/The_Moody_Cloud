@@ -4,7 +4,7 @@
 
         <!-- Preview mode -->
         <div v-if="route.query.preview" @click="addLocation"
-            class="text-white py-3 px-8 bg-weather-primary rounded-xl -translate-y-1 flex justify-center items-center hover:text-amber-400 duration-150 cursor-pointer">
+            class="text-white pt-5 pb-4 px-8 bg-weather-primary rounded-xl -translate-y-1 flex justify-center items-center hover:text-amber-400 duration-150 cursor-pointer relative z-20">
             <p>
                 Add this location to your tracking list
             </p>
@@ -186,24 +186,30 @@
                 </div>
             </div>
 
-            <div class="w-full px-11 mt-8 flex flex-col xs:flex-row drop-shadow-[0_2px_2px_rgba(0,0,0,0.6)]">
-                <div class="pr-4 ">
-                    <p v-if="tempFormat">
-                        Feels like
-                        {{ Math.round(weatherData.current.feels_like) }}&deg;
-                    </p>
-                    <p v-else>
-                        Feels like
-                        {{ Math.round((weatherData.current.feels_like * 9 / 5) + 32) }}&deg;
+            <div class="w-full px-11 mt-8 flex flex-col drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
+                <div v-if="weatherData.alerts" class="flex flex-row items-center text-orange-400 pb-2 text-xl">
+                    <i class="fa-solid fa-triangle-exclamation pr-2"></i>
+                    <p class="font-bold">{{ weatherData.alerts[0].event }}</p>
+                </div>
+                <div class="flex flex-row">
+                    <div class="pr-4">
+                        <p v-if="tempFormat">
+                            Feels like
+                            {{ Math.round(weatherData.current.feels_like) }}&deg;
+                        </p>
+                        <p v-else>
+                            Feels like
+                            {{ Math.round((weatherData.current.feels_like * 9 / 5) + 32) }}&deg;
+                        </p>
+                    </div>
+                    <p class="capitalize">
+                        {{ weatherData.current.weather[0].description }}
                     </p>
                 </div>
-                <p class="capitalize ">
-                    {{ weatherData.current.weather[0].description }}
-                </p>
             </div>
 
             <div
-                class="flex flex-col justify-center w-5/6 relative z-20 drop-shadow-[0_2px_2px_rgba(0,0,0,0.6)]  transition-all duration-500">
+                class="flex flex-col justify-center w-5/6 relative z-20 drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]  transition-all duration-500">
                 <div @click="showDetails"
                     class="flex justify-center self-center mb-5 mt-4 transition-transform duration-300 place-self-center  "
                     :class="{ '-scale-y-100': detailsStatus }">
@@ -281,6 +287,4 @@ const detailsStatus = ref(false)
 const showDetails = () => {
     detailsStatus.value = !detailsStatus.value
 }
-
-
 </script>
