@@ -112,13 +112,13 @@
 
                     <div v-else-if="day.weather[0].icon === '13d'"
                         class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
-                        <img class="w-full h-full " src="../assets/icons/static/snow-3.svg" alt="weather icon" />
+                        <img class="w-full h-full " src="../assets/icons/static/snowy-3.svg" alt="weather icon" />
                     </div>
 
 
                     <div v-else-if="day.weather[0].icon === '13n'"
                         class="absolute -top-20  -left-20 w-40 h-40 z-10 opacity-50 xs:opacity-100">
-                        <img class="w-full h-full " src="../assets/icons/static/snow-5.svg" alt="weather icon" />
+                        <img class="w-full h-full " src="../assets/icons/static/snowy-5.svg" alt="weather icon" />
                     </div>
 
                     <div v-else-if="day.weather[0].icon === '50d'"

@@ -43,9 +43,9 @@
                     src="../assets/icons/animated/thunder.svg" alt="weather icon" />
 
                 <img v-else-if="location.weather.weather[0].icon === '13d'" class="absolute  w-96 h-96 -bottom-28 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.2)]"
-                    src="../assets/icons/animated/snow-3.svg" alt="weather icon" />
+                    src="../assets/icons/animated/snowy-3.svg" alt="weather icon" />
                 <img v-else-if="location.weather.weather[0].icon === '13n'" class="absolute  w-96 h-96 -bottom-28 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.2)]"
-                    src="../assets/icons/animated/snow-5.svg" alt="weather icon" />
+                    src="../assets/icons/animated/snowy-5.svg" alt="weather icon" />
 
                 <img v-else-if="location.weather.weather[0].icon === '50d'" class="absolute  w-96 h-96 -bottom-44 left-10 drop-shadow-[0_2px_2px_rgba(0,0,0,0.1)]"
                     src="../assets/icons/animated/cloudy.svg" alt="weather icon" />

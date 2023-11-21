@@ -55,9 +55,9 @@
                             src="../assets/icons/static/thunder.svg" alt="weather icon" />
 
                         <img v-else-if="hourData.weather[0].icon === '13d' || '09n'" class="w-32"
-                            src="../assets/icons/static/snow-3.svg" alt="weather icon" />
+                            src="../assets/icons/static/snowy-3.svg" alt="weather icon" />
                         <img v-else-if="hourData.weather[0].icon === '13n'" class="w-32"
-                            src="../assets/icons/static/snow-5.svg" alt="weather icon" />
+                            src="../assets/icons/static/snowy-5.svg" alt="weather icon" />
 
                         <img v-else-if="hourData.weather[0].icon === '50d' || '09n'" class="w-32"
                             src="../assets/icons/static/cloudy.svg" alt="weather icon" />
